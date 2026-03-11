@@ -54,8 +54,8 @@ export default function ContactBody() {
                   Select your product or solution <span className="text-red-500">*</span>
                 </label>
                 <div className="bg-[#fafafa] border-b-4 border-[#e0e0e0] rounded-lg px-4 py-3 flex items-center relative">
-                  <select className="w-full bg-transparent outline-none text-[21px] text-[#1d1a22] placeholder:text-[#c6c6c6] font-sans appearance-none z-10 cursor-pointer">
-                    <option value="" disabled selected>Select</option>
+                  <select defaultValue="" className="w-full bg-transparent outline-none text-[21px] text-[#1d1a22] placeholder:text-[#c6c6c6] font-sans appearance-none z-10 cursor-pointer">
+                    <option value="" disabled>Select</option>
                     <option value="smart-classroom">Smart Classroom</option>
                     <option value="multimedia">Multimedia Systems</option>
                     <option value="smart-campus">Smart Campus</option>

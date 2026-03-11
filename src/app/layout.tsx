@@ -15,6 +15,9 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "AnruiStar Smart Technologies",
   description: "Redefining Smart Education & Multimedia Experiences in Africa",
+  icons: {
+    icon: "/images/favicon.svg",
+  },
 };
 
 export default function RootLayout({

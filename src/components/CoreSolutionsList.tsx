@@ -873,9 +873,9 @@ function ProductsCarouselContent() {
                     {sub.bestFor ? (
                       <div className="font-sans text-[12px] text-[#002d1b] leading-[18px] flex flex-col gap-1">
                         <div><span className="font-bold">Best For:</span> {sub.bestFor as string}</div>
-                        {sub.keySpecs && (
+                        {sub.keySpecs ? (
                           <div><span className="font-bold">Key Specs:</span> {(sub.keySpecs as string[]).join(", ")}</div>
-                        )}
+                        ) : null}
                       </div>
                     ) : (
                       <p className="font-sans text-[12px] text-[#002d1b] leading-[18px]">
