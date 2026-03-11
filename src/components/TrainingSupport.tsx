@@ -1,12 +1,22 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { fadeInLeft, fadeInRight, staggerContainer, staggerItem, defaultViewport } from "@/utils/animations";
 
 export default function TrainingSupport() {
   return (
     <section className="bg-gradient-to-t from-[#2e6107] to-[#8ed955] py-24 px-6 md:px-[70px] relative overflow-hidden">
       <div className="mx-auto flex flex-col lg:flex-row gap-16 items-center justify-between">
         {/* Left Content */}
-        <div className="flex-1 text-white space-y-8 max-w-[603px]">
+        <motion.div
+          className="flex-1 text-white space-y-8 max-w-[603px]"
+          initial="hidden"
+          whileInView="visible"
+          viewport={defaultViewport}
+          variants={fadeInLeft}
+        >
           <div className="space-y-6">
             <h2 className="flex items-center gap-4 text-3xl md:text-[32px] font-bold font-display tracking-[-0.64px] drop-shadow-md">
               <span className="text-4xl md:text-[32px]">6.</span>
@@ -17,7 +27,13 @@ export default function TrainingSupport() {
             </p>
           </div>
 
-          <div className="space-y-4">
+          <motion.div
+            className="space-y-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
             {[
               {
                 title: "AnruiStar Academy™",
@@ -32,7 +48,11 @@ export default function TrainingSupport() {
                 description: "Comprehensive service plans with local support teams and spare-parts availability."
               }
             ].map((item, index) => (
-              <div key={index} className="bg-[#142f00]/40 backdrop-blur-sm rounded-lg p-4 space-y-2 border border-white/5">
+              <motion.div
+                key={index}
+                className="bg-[#142f00]/40 backdrop-blur-sm rounded-lg p-4 space-y-2 border border-white/5"
+                variants={staggerItem}
+              >
                 <div className="flex items-center gap-4">
                   <div className="w-[18px] h-[18px] rounded-full bg-[#8ed955] shrink-0 border-2 border-white/20" />
                   <h3 className="text-xl font-medium font-display tracking-[-0.42px]">
@@ -42,24 +62,37 @@ export default function TrainingSupport() {
                 <p className="text-base font-normal font-sans tracking-[-0.32px] leading-relaxed pl-[34px] opacity-90">
                   {item.description}
                 </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           <p className="text-lg font-semibold font-sans tracking-[-0.36px] leading-relaxed">
             From deployment to daily use, we support institutions at every stage of their digital transformation journey.
           </p>
 
-          <Link
-            href="/contact"
-            className="inline-block bg-white text-[#265900] font-bold text-lg py-3 px-8 rounded-xl border-b-4 border-[#265900] active:border-b-0 active:translate-y-1 transition-all hover:brightness-110 shadow-lg"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={defaultViewport}
+            transition={{ duration: 0.5 }}
           >
-            Contact us
-          </Link>
-        </div>
+            <Link
+              href="/contact"
+              className="inline-block bg-white text-[#265900] font-bold text-lg py-3 px-8 rounded-xl border-b-4 border-[#265900] active:border-b-0 active:translate-y-1 transition-all hover:brightness-110 shadow-lg"
+            >
+              Contact us
+            </Link>
+          </motion.div>
+        </motion.div>
 
         {/* Right Image */}
-        <div className="flex-1 w-full max-w-[557px]">
+        <motion.div
+          className="flex-1 w-full max-w-[557px]"
+          initial="hidden"
+          whileInView="visible"
+          viewport={defaultViewport}
+          variants={fadeInRight}
+        >
           <div className="relative h-[578px] rounded-xl overflow-hidden shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-500">
             <Image
               src="/images/training-support.jpg"
@@ -68,7 +101,7 @@ export default function TrainingSupport() {
               className="object-cover"
             />
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

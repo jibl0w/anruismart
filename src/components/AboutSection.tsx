@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { fadeInUp, staggerContainer, staggerItem, defaultViewport } from "@/utils/animations";
 
 const objectives = [
   {
@@ -33,7 +35,13 @@ export default function AboutSection() {
     <section id="about" className="bg-white py-16 md:py-24 px-6 md:px-[70px] text-[#1D1A22]">
       <div className="mx-auto space-y-16 md:space-y-24">
         {/* Introduction */}
-        <div className="space-y-6 md:space-y-8 w-full text-justify">
+        <motion.div
+          className="space-y-6 md:space-y-8 w-full text-justify"
+          initial="hidden"
+          whileInView="visible"
+          viewport={defaultViewport}
+          variants={fadeInUp}
+        >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-display text-[#1c559d] text-left">
             About AnruiStar Smart technologies
           </h2>
@@ -45,12 +53,21 @@ export default function AboutSection() {
               By combining global technical expertise with strong local market knowledge, we deliver solutions engineered for real-world African environments. Our technical partner provides manufacturing expertise and product innovation while we lead market strategy, customer engagement, and local operations. Together we operate assembly and R&D labs in Nigeria to adapt, test, and refine products for local needs and to accelerate delivery and service.
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={defaultViewport}
+          variants={staggerContainer}
+        >
           {/* Mission Card */}
-          <div className="bg-[#f3f3f3] p-8 md:p-10 rounded-2xl border border-[#e0e0e0] flex flex-col gap-6 md:gap-8 shadow-sm hover:shadow-md transition-shadow">
+          <motion.div
+            className="bg-[#f3f3f3] p-8 md:p-10 rounded-2xl border border-[#e0e0e0] flex flex-col gap-6 md:gap-8 shadow-sm hover:shadow-md transition-shadow"
+            variants={staggerItem}
+          >
             <div className="w-12 h-12 md:w-14 md:h-14 relative shrink-0 bg-[#2f95ec] rounded-full p-3 flex items-center justify-center">
                <Image src="/images/mission-icon-v2.svg" alt="Mission Icon" width={32} height={32} className="object-contain" />
             </div>
@@ -60,10 +77,13 @@ export default function AboutSection() {
                 We are committed to delivering world-class digital and multimedia solutions that empower institutions, businesses, and individuals. By combining global technical expertise with local market knowledge, we provide smart technologies that transform classrooms, workplaces, and communities.
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Vision Card */}
-          <div className="bg-[#f3f3f3] p-8 md:p-10 rounded-2xl border border-[#e0e0e0] flex flex-col gap-6 md:gap-8 shadow-sm hover:shadow-md transition-shadow">
+          <motion.div
+            className="bg-[#f3f3f3] p-8 md:p-10 rounded-2xl border border-[#e0e0e0] flex flex-col gap-6 md:gap-8 shadow-sm hover:shadow-md transition-shadow"
+            variants={staggerItem}
+          >
              <div className="w-12 h-12 md:w-14 md:h-14 relative shrink-0 bg-[#2f95ec] rounded-full p-3 flex items-center justify-center">
                <Image src="/images/vision-icon-v2.svg" alt="Vision Icon" width={32} height={32} className="object-contain" />
             </div>
@@ -73,10 +93,13 @@ export default function AboutSection() {
                 To redefine education and multimedia experiences in Africa by creating smart, interactive, and innovative environments that inspire learning, collaboration, and creativity.
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Strategic Partners Card */}
-          <div className="bg-[#1c559d] p-8 md:p-10 rounded-2xl border border-[#001c3f] flex flex-col gap-6 md:gap-8 text-white shadow-lg">
+          <motion.div
+            className="bg-[#1c559d] p-8 md:p-10 rounded-2xl border border-[#001c3f] flex flex-col gap-6 md:gap-8 text-white shadow-lg"
+            variants={staggerItem}
+          >
              <div className="bg-[#2f95ec] rounded-lg p-2 flex items-center gap-2 self-start">
                <div className="relative w-20 h-8 md:w-24 md:h-10 bg-white rounded px-2">
                  <Image src="/images/partner-logo.png" alt="Drawel Tenfly" fill className="object-contain" />
@@ -89,19 +112,29 @@ export default function AboutSection() {
                 With more than 30 years of industry experience and ISO-certified operations, Partnering with Anruistar Smart technologies transform how people teach, learn, and collaborate.
               </p>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Objectives Accordion */}
-        <div className="space-y-8 md:space-y-12">
+        <motion.div
+          className="space-y-8 md:space-y-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={defaultViewport}
+          variants={fadeInUp}
+        >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-display text-[#1c559d] text-left">
             Our Objectives
           </h2>
-          <div className="max-w-4xl mx-auto space-y-4 md:space-y-6">
+          <motion.div
+            className="max-w-4xl mx-auto space-y-4 md:space-y-6"
+            variants={staggerContainer}
+          >
             {objectives.map((item, index) => (
-              <div
+              <motion.div
                 key={index}
                 className="bg-white border border-[#e0e0e0] rounded-2xl overflow-hidden shadow-sm transition-all duration-300"
+                variants={staggerItem}
               >
                 <button
                   onClick={() => toggleAccordion(index)}
@@ -111,11 +144,11 @@ export default function AboutSection() {
                     {item.title}
                   </span>
                   <div className={`transition-transform duration-300 shrink-0 ${openIndex === index ? 'rotate-180' : ''}`}>
-                    <svg 
-                      width="24" 
-                      height="24" 
-                      viewBox="0 0 24 24" 
-                      fill="currentColor" 
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
                       className="text-[#1c559d]"
                     >
                       <path d="M12 16L6 10H18L12 16Z" />
@@ -131,10 +164,10 @@ export default function AboutSection() {
                     {item.content}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

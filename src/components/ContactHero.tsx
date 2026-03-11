@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { fadeInUp } from "@/utils/animations";
 
 export default function ContactHero() {
   return (
@@ -17,15 +21,30 @@ export default function ContactHero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-30 h-full flex flex-col items-center justify-center text-center px-6 pt-20">
-        <div className="space-y-6 max-w-4xl">
-          <h1 className="text-4xl md:text-[56px] font-bold font-display text-[#8ed955] leading-tight tracking-[-1.12px]">
+      <div className="relative z-30 h-full flex flex-col items-center justify-center text-center px-6 -mt-16 md:-mt-20">
+        <motion.div
+          className="space-y-6 max-w-4xl"
+          initial="hidden"
+          animate="visible"
+          variants={fadeInUp}
+        >
+          <motion.h1
+            className="text-4xl md:text-[56px] font-bold font-display text-[#8ed955] leading-tight tracking-[-1.12px]"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
             Contact Us
-          </h1>
-          <p className="text-lg md:text-[21px] font-medium text-white font-sans">
-            Let’s Power What Matters to you, Together
-          </p>
-        </div>
+          </motion.h1>
+          <motion.p
+            className="text-lg md:text-[21px] font-medium text-white font-sans"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            Let's help you deploy smart classroom, campus, and smart multimedia solutions.
+          </motion.p>
+        </motion.div>
       </div>
     </section>
   );

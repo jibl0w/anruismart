@@ -4,6 +4,7 @@ import CoreSolutions from "@/components/CoreSolutions";
 import ProductCTA from "@/components/ProductCTA";
 import StrategicAdvantages from "@/components/StrategicAdvantages";
 import WhoWeServe from "@/components/WhoWeServe";
+import WhyChooseUs from "@/components/WhyChooseUs";
 import CallToAction from "@/components/CallToAction";
 import Footer from "@/components/Footer";
 
@@ -16,6 +17,7 @@ export default function Home() {
       <ProductCTA />
       <StrategicAdvantages />
       <WhoWeServe />
+      <WhyChooseUs />
       <CallToAction />
       <Footer />
     </main>

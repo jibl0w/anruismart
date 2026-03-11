@@ -1,14 +1,22 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { fadeInUp, staggerContainer, staggerItem, defaultViewport } from "@/utils/animations";
 
 export default function ContactBody() {
   return (
     <section className="bg-[#f3f3f3] pt-[73px] pb-24 px-6 md:px-[70px] -mt-32 md:-mt-48 relative z-30">
       <div className="mx-auto space-y-12">
-        
+
         {/* Main Form Card */}
-        <div className="bg-white rounded-[24px] shadow-xl overflow-hidden flex flex-col lg:flex-row border-b-4 border-[#e0e0e0]">
+        <motion.div
+          className="bg-white rounded-[24px] shadow-xl overflow-hidden flex flex-col lg:flex-row border-b-4 border-[#e0e0e0]"
+          initial="hidden"
+          whileInView="visible"
+          viewport={defaultViewport}
+          variants={fadeInUp}
+        >
           {/* Form Section */}
           <div className="flex-1 p-8 md:p-12 flex flex-col gap-8">
             <div className="space-y-6">
@@ -89,19 +97,28 @@ export default function ContactBody() {
               className="object-cover"
             />
           </div>
-        </div>
+        </motion.div>
 
         {/* Info Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={defaultViewport}
+          variants={staggerContainer}
+        >
           {/* Enquiries Card */}
-          <div className="bg-white rounded-[16px] border-b-4 border-[#e0e0e0] p-8 md:p-12 flex flex-col gap-8 shadow-sm">
+          <motion.div
+            className="bg-white rounded-[16px] border-b-4 border-[#e0e0e0] p-8 md:p-12 flex flex-col gap-8 shadow-sm"
+            variants={staggerItem}
+          >
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-[#2f95ec] rounded-full flex items-center justify-center shrink-0">
                 <Image src="/images/icon-enquiries.svg" alt="Enquiries" width={28} height={28} />
               </div>
               <h3 className="text-[27px] font-bold font-display text-[#1c559d]">Enquires</h3>
             </div>
-            
+
             <p className="text-[18px] lg:text-[21px] font-normal leading-[1.5] lg:leading-[32px] tracking-[-0.42px] text-[#1D1A22] text-justify font-sans">
               Have a renewable energy project, partnership idea, technical enquiries or feed back. Our team is ready to collaborate on solar installations, EV infrastructure, or custom solutions that drive sustainable impact
             </p>
@@ -114,22 +131,25 @@ export default function ContactBody() {
                 Email us: info@anruistar.com
               </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Address Card */}
-          <div className="bg-white rounded-[16px] border-b-4 border-[#e0e0e0] p-8 md:p-12 flex flex-col gap-8 shadow-sm">
+          <motion.div
+            className="bg-white rounded-[16px] border-b-4 border-[#e0e0e0] p-8 md:p-12 flex flex-col gap-8 shadow-sm"
+            variants={staggerItem}
+          >
              <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-[#2f95ec] rounded-full flex items-center justify-center shrink-0">
                    <Image src="/images/icon-location.svg" alt="Location" width={28} height={28} />
                 </div>
                 <h3 className="text-[27px] font-bold font-display text-[#1c559d]">Address</h3>
              </div>
-             
+
              <p className="text-[18px] lg:text-[21px] font-normal leading-[1.5] lg:leading-[32px] tracking-[-0.42px] text-[#1D1A22] text-justify font-sans">
                54 (14) Abayomi Akinmosa Crescent, Jericho, Ibadan, Nigeria.
              </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,8 +1,48 @@
+"use client";
+
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { useEffect, useState } from "react";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import { fadeInUp, staggerContainer, staggerItem, defaultViewport } from "@/utils/animations";
+
+function Counter({ value, suffix = "" }: { value: number; suffix?: string }) {
+  const ref = useRef<HTMLHeadingElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
+  const [displayValue, setDisplayValue] = useState("0");
+
+  useEffect(() => {
+    if (isInView) {
+      const controls = animate(count, value, {
+        duration: 2,
+        ease: "easeOut",
+      });
+
+      return controls.stop;
+    }
+  }, [isInView, count, value]);
+
+  useEffect(() => {
+    const unsubscribe = rounded.on("change", (latest) => {
+      setDisplayValue(latest.toString());
+    });
+    return unsubscribe;
+  }, [rounded]);
+
+  return (
+    <h3 ref={ref} className="text-4xl md:text-5xl lg:text-6xl font-bold font-display">
+      {displayValue}{suffix}
+    </h3>
+  );
+}
+
 export default function StrategicAdvantages() {
   return (
     <section id="partners" className="bg-[#8ed955] py-16 md:py-24 px-6 md:px-[70px] relative overflow-hidden">
       {/* CSS Pattern Background */}
-      <div 
+      <div
         className="absolute inset-0 opacity-10 pointer-events-none"
         style={{
           backgroundImage: 'radial-gradient(#ffffff 2px, transparent 2px)',
@@ -12,35 +52,56 @@ export default function StrategicAdvantages() {
 
       <div className="mx-auto relative z-10 flex flex-col items-center gap-12 md:gap-16">
         {/* Header */}
-        <div className="text-center space-y-4 md:space-y-6 max-w-4xl mx-auto">
+        <motion.div
+          className="text-center space-y-4 md:space-y-6 max-w-4xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={defaultViewport}
+          variants={fadeInUp}
+        >
           <h2 className="text-3xl md:text-4xl lg:text-5xl lg:text-6xl font-bold font-display text-white drop-shadow-sm">
             Partners & Strategic Advantages
           </h2>
           <p className="text-lg md:text-xl lg:text-2xl font-bold text-white leading-relaxed max-w-3xl mx-auto">
             Leveraging 30+ Years Of High-Tech Enterprise Specialization With Drawel-Tenfly
           </p>
-        </div>
+        </motion.div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full max-w-5xl">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full max-w-5xl"
+          initial="hidden"
+          whileInView="visible"
+          viewport={defaultViewport}
+          variants={staggerContainer}
+        >
           {/* Card 1 */}
-          <div className="bg-[#265900]/60 backdrop-blur-sm border-b-4 border-[#265900] rounded-2xl p-6 md:p-8 flex flex-col items-center text-center text-white gap-2 transition-transform hover:-translate-y-1">
-            <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display">8</h3>
+          <motion.div
+            className="bg-[#265900]/60 backdrop-blur-sm border-b-4 border-[#265900] rounded-2xl p-6 md:p-8 flex flex-col items-center text-center text-white gap-2 transition-transform hover:-translate-y-1"
+            variants={staggerItem}
+          >
+            <Counter value={8} />
             <p className="text-lg md:text-xl lg:text-2xl font-semibold text-center">Production Line</p>
-          </div>
+          </motion.div>
 
           {/* Card 2 */}
-          <div className="bg-[#265900]/60 backdrop-blur-sm border-b-4 border-[#265900] rounded-2xl p-6 md:p-8 flex flex-col items-center text-center text-white gap-2 transition-transform hover:-translate-y-1">
+          <motion.div
+            className="bg-[#265900]/60 backdrop-blur-sm border-b-4 border-[#265900] rounded-2xl p-6 md:p-8 flex flex-col items-center text-center text-white gap-2 transition-transform hover:-translate-y-1"
+            variants={staggerItem}
+          >
             <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display">5+ Million</h3>
             <p className="text-lg md:text-xl lg:text-2xl font-semibold text-center">Unit Annual Capacity</p>
-          </div>
+          </motion.div>
 
           {/* Card 3 */}
-          <div className="bg-[#265900]/60 backdrop-blur-sm border-b-4 border-[#265900] rounded-2xl p-6 md:p-8 flex flex-col items-center text-center text-white gap-2 transition-transform hover:-translate-y-1">
-            <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display">100+</h3>
+          <motion.div
+            className="bg-[#265900]/60 backdrop-blur-sm border-b-4 border-[#265900] rounded-2xl p-6 md:p-8 flex flex-col items-center text-center text-white gap-2 transition-transform hover:-translate-y-1"
+            variants={staggerItem}
+          >
+            <Counter value={100} suffix="+" />
             <p className="text-lg md:text-xl lg:text-2xl font-semibold text-center">Patent Granted</p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

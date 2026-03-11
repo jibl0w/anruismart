@@ -1,12 +1,25 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { staggerContainer, staggerItem, defaultViewport } from "@/utils/animations";
 
 export default function Footer() {
   return (
     <footer className="bg-[#1c559d] text-white py-12 md:py-20 px-6 md:px-[70px] border-t border-white/10">
-      <div className="mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 text-center md:text-left items-center md:items-start">
+      <motion.div
+        className="mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 text-center md:text-left items-center md:items-start"
+        initial="hidden"
+        whileInView="visible"
+        viewport={defaultViewport}
+        variants={staggerContainer}
+      >
         {/* Quick Links */}
-        <div className="space-y-4 md:space-y-6 flex flex-col items-center md:items-start w-full">
+        <motion.div
+          className="space-y-4 md:space-y-6 flex flex-col items-center md:items-start w-full"
+          variants={staggerItem}
+        >
           <h3 className="text-xl md:text-2xl font-bold font-display capitalize">Quick Links</h3>
           <nav className="flex flex-col gap-3 md:gap-4 text-base md:text-lg lg:text-xl">
             <Link href="/core-solutions" className="hover:text-[#99ea5c] transition-colors">Products</Link>
@@ -14,18 +27,24 @@ export default function Footer() {
             <Link href="/#about" className="hover:text-[#99ea5c] transition-colors">About us</Link>
             <Link href="/contact" className="hover:text-[#99ea5c] transition-colors">Contact</Link>
           </nav>
-        </div>
+        </motion.div>
 
         {/* Address */}
-        <div className="space-y-4 md:space-y-6 flex flex-col items-center md:items-start w-full">
+        <motion.div
+          className="space-y-4 md:space-y-6 flex flex-col items-center md:items-start w-full"
+          variants={staggerItem}
+        >
           <h3 className="text-xl md:text-2xl font-bold font-display capitalize">Address</h3>
           <p className="text-base md:text-lg lg:text-xl leading-relaxed max-w-[240px]">
             54 (14) Abayomi Akinmosa Crescent, Jericho, Ibadan, Nigeria
           </p>
-        </div>
+        </motion.div>
 
         {/* Strategic Partners */}
-        <div className="space-y-4 md:space-y-6 flex flex-col items-center md:items-start w-full">
+        <motion.div
+          className="space-y-4 md:space-y-6 flex flex-col items-center md:items-start w-full"
+          variants={staggerItem}
+        >
           <div className="bg-[#2f95ec] border-2 border-[#0f386c] rounded-xl p-4 w-full max-w-[200px] flex flex-col gap-4 items-center">
             <h4 className="text-xs md:text-sm font-bold font-display text-center uppercase tracking-wider">
               Strategic partners
@@ -33,19 +52,22 @@ export default function Footer() {
             <div className="bg-white rounded-lg p-2 w-full flex flex-col items-center gap-2 overflow-hidden shadow-sm">
                <span className="text-[#1c559d] font-bold text-xs md:text-sm">Drawell Tenfly</span>
                <div className="relative w-full h-8 md:h-10">
-                  <Image 
-                    src="/images/footer-partner.png" 
-                    alt="Drawell Tenfly" 
-                    fill 
+                  <Image
+                    src="/images/footer-partner.png"
+                    alt="Drawell Tenfly"
+                    fill
                     className="object-contain"
                   />
                </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Contact */}
-        <div className="space-y-4 md:space-y-6 flex flex-col items-center md:items-start w-full">
+        <motion.div
+          className="space-y-4 md:space-y-6 flex flex-col items-center md:items-start w-full"
+          variants={staggerItem}
+        >
           <h3 className="text-xl md:text-2xl font-bold font-display capitalize">Contact</h3>
           <div className="flex flex-col items-center md:items-start gap-4 md:gap-6 w-full">
             <a href="mailto:info@anruistar.com" className="flex items-center gap-3 hover:text-[#99ea5c] transition-colors underline decoration-1 underline-offset-4 text-base md:text-lg lg:text-xl">
@@ -83,8 +105,8 @@ export default function Footer() {
               </Link>
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Copyright */}
       <div className="container mx-auto mt-12 md:mt-20 pt-6 md:pt-8 border-t border-white/10 text-center">

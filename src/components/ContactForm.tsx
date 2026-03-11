@@ -13,7 +13,7 @@ export default function ContactForm() {
           className="object-cover opacity-20 z-0"
           priority
         />
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6 pt-20">
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6 pb-20">
           <h1 className="text-4xl md:text-5xl lg:text-[56px] font-bold font-display text-[#8ed955] leading-tight">
             Contact Us
           </h1>

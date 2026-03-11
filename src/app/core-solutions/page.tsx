@@ -17,7 +17,6 @@ export default function CoreSolutionsPage() {
       <CoreSolutionsHero />
       <CoreSolutionsList />
       <TrainingSupport />
-      <WhoWeServeAndWhy />
       <CallToAction />
       <Footer />
     </main>
