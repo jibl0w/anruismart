@@ -170,17 +170,7 @@ export default function CoreSolutions() {
           ))}
         </div>
 
-        <motion.div
-          className="flex justify-center pt-6 md:pt-8"
-          initial="hidden"
-          whileInView="visible"
-          viewport={defaultViewport}
-          variants={fadeInUp}
-        >
-          <button className="bg-[#8ed955] text-white text-lg font-bold py-4 px-12 rounded-xl border-b-4 border-[#265900] active:border-b-0 active:translate-y-1 transition-all hover:brightness-105 shadow-lg w-full sm:w-auto">
-            Contact Us
-          </button>
-        </motion.div>
+
       </div>
     </section>
   );
