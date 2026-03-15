@@ -71,15 +71,7 @@ export default function WhoWeServe() {
             ))}
           </motion.div>
 
-          <motion.button
-            className="bg-[#8ed955] text-white text-lg font-bold py-4 px-10 rounded-xl border-b-4 border-[#265900] active:border-b-0 active:translate-y-1 transition-all hover:brightness-105 hover:shadow-lg w-full sm:w-auto"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={defaultViewport}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            Contact Us
-          </motion.button>
+
         </motion.div>
 
         {/* Right Image */}

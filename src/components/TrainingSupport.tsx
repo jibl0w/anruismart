@@ -70,19 +70,7 @@ export default function TrainingSupport() {
             From deployment to daily use, we support institutions at every stage of their digital transformation journey.
           </p>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={defaultViewport}
-            transition={{ duration: 0.5 }}
-          >
-            <Link
-              href="/contact"
-              className="inline-block bg-white text-[#265900] font-bold text-lg py-3 px-8 rounded-xl border-b-4 border-[#265900] active:border-b-0 active:translate-y-1 transition-all hover:brightness-110 shadow-lg"
-            >
-              Contact us
-            </Link>
-          </motion.div>
+
         </motion.div>
 
         {/* Right Image */}

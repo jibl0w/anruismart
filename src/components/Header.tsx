@@ -30,7 +30,7 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-12 font-bold text-[18px] tracking-[-0.36px] text-[#48464c]">
           <Link href="/#about" className="hover:text-[#1c559d] transition-colors">About us</Link>
-          <Link href="/core-solutions" className="hover:text-[#1c559d] transition-colors">Products</Link>
+          <Link href="/core-solutions" className="hover:text-[#1c559d] transition-colors">Solutions</Link>
           <Link href="/#partners" className="hover:text-[#1c559d] transition-colors">Strategic Partners</Link>
         </nav>
 
@@ -69,7 +69,7 @@ export default function Header() {
           >
             <nav className="flex flex-col gap-6 font-bold text-[18px] text-center text-[#48464c]">
               <Link href="/#about" className="hover:text-[#1c559d]" onClick={() => setIsMenuOpen(false)}>About us</Link>
-              <Link href="/core-solutions" className="hover:text-[#1c559d]" onClick={() => setIsMenuOpen(false)}>Products</Link>
+              <Link href="/core-solutions" className="hover:text-[#1c559d]" onClick={() => setIsMenuOpen(false)}>Solutions</Link>
               <Link href="/#partners" className="hover:text-[#1c559d]" onClick={() => setIsMenuOpen(false)}>Strategic Partners</Link>
             </nav>
             <Link

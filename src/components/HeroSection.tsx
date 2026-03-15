@@ -53,16 +53,16 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.5 }}
           >
             <Link
-              href="/contact"
+              href="/core-solutions"
               className="w-full sm:w-auto bg-[#8ed955] text-white text-[16px] md:text-[18px] font-bold py-4 md:py-[17px] px-8 md:px-[32px] rounded-[12px] border-b-4 border-[#265900] active:border-b-0 active:translate-y-1 transition-all text-center hover:brightness-105"
             >
-              Contact Us
+              Explore Solutions
             </Link>
             <Link
-              href="/core-solutions"
+              href="/contact"
               className="w-full sm:w-auto bg-white text-[#1c559d] text-[16px] md:text-[18px] font-bold py-4 md:py-[17px] px-8 md:px-[32px] rounded-[12px] border border-[#1c559d] border-b-4 active:border-b active:translate-y-1 transition-all text-center hover:bg-gray-50"
             >
-              Explore Products
+              Contact Us
             </Link>
           </motion.div>
         </motion.div>

@@ -305,7 +305,7 @@ export default function CoreSolutionsList() {
               {/* Left: Title + Advantages Card + CTA */}
               <div className="flex-1 flex flex-col gap-8">
                 <h3 className="font-display font-bold text-[24px] text-[#1c559d] tracking-[-0.48px] leading-[27px]">
-                  Anrui smart tech Smart Interactive Displays & Classrooms Advantages
+                  Anrui smart tech Smart Interactive Displays & Classrooms Solutions Advantages
                 </h3>
 
                 <div className="bg-[#2f95ec] rounded-[16px] p-6">
@@ -797,16 +797,16 @@ function ProductsCarouselContent() {
       </p>
 
       {/* Tab Bar */}
-      <div className="flex justify-center">
-        <div className="bg-white rounded-[8px] flex overflow-hidden">
+      <div className="flex justify-center w-full">
+        <div className="bg-white rounded-full flex overflow-x-auto scrollbar-hide w-full md:w-auto md:overflow-hidden border border-[#e0e0e0]">
           {productTabs.map((item, index) => (
             <button
               key={item.tab}
               onClick={() => setActiveTab(index)}
-              className={`h-[89px] px-8 py-2.5 font-display text-[22px] md:text-[27px] leading-[36px] whitespace-nowrap transition-colors ${
+              className={`h-12 md:h-[89px] px-6 md:px-8 py-2 md:py-2.5 font-display text-[12px] md:text-[27px] font-bold leading-tight md:leading-[36px] whitespace-nowrap transition-colors flex items-center justify-center shrink-0 ${
                 activeTab === index
-                  ? "bg-[#2f95ec] text-white font-bold"
-                  : "bg-white text-[#68b0ef] font-medium hover:bg-[#f0f8ff]"
+                  ? "bg-[#2f95ec] text-white"
+                  : "bg-white text-[#68b0ef] hover:bg-[#f0f8ff]"
               }`}
             >
               {item.tab}
@@ -816,20 +816,20 @@ function ProductsCarouselContent() {
       </div>
 
       {/* Carousel Content */}
-      <div className="flex gap-6 items-center">
+      <div className="flex gap-2 md:gap-6 items-center w-full relative">
         {/* Left Arrow */}
         <button
           onClick={prev}
-          className="shrink-0 w-12 h-[47px] bg-[#2f95ec] rounded-[8px] flex items-center justify-center rotate-180 hover:brightness-110 transition-all"
+          className="shrink-0 w-9 h-9 md:w-12 md:h-[47px] bg-[#2f95ec] rounded-full md:rounded-[8px] flex items-center justify-center hover:brightness-110 transition-all z-10"
           aria-label="Previous product"
         >
-          <svg width="18" height="29" viewBox="0 0 18 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg className="w-5 h-5 md:w-4.5 md:h-7 rotate-180" viewBox="0 0 18 29" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3.42508 0.146873L0 3.57195L11.1255 14.7218L0 25.8716L3.42508 29.2967L18 14.7218L3.42508 0.146873Z" fill="white"/>
           </svg>
         </button>
-
+ 
         {/* Content Card */}
-        <div className="flex-1 bg-white border border-[#e0e0e0] border-b-[5px] rounded-[16px] px-6 py-8 flex flex-col gap-8 overflow-hidden">
+        <div className="flex-1 bg-white border border-[#e0e0e0] border-b-5 md:border-b-[5px] rounded-[16px] px-3 md:px-6 py-4 md:py-8 flex flex-col gap-6 md:gap-8 overflow-hidden min-w-0">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -837,19 +837,19 @@ function ProductsCarouselContent() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -30 }}
               transition={{ duration: 0.3 }}
-              className="flex flex-col gap-8"
+              className="flex flex-col gap-6 md:gap-8"
             >
               {/* Title + Description + Image */}
-              <div className="flex flex-col lg:flex-row gap-8 lg:gap-[89px] items-center">
+              <div className="flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-[89px] items-center lg:items-start text-center lg:text-left">
                 <div className="flex-1 flex flex-col gap-4">
-                  <h3 className="font-display font-bold text-[28px] md:text-[32px] text-[#53a5ed] leading-[36px]">
+                  <h3 className="font-display font-bold text-[24px] md:text-[32px] text-[#2f95ec] leading-tight md:leading-[36px]">
                     {current.title}
                   </h3>
-                  <p className="font-sans text-[16px] text-[#1d1a22] leading-[24px] max-w-[535px]">
+                  <p className="font-sans text-[14px] md:text-[16px] text-[#1d1a22] leading-[24px] md:max-w-[535px]">
                     {current.description}
                   </p>
                 </div>
-                <div className="relative h-[250px] lg:h-[326px] w-full lg:w-[427px] shrink-0 rounded-[9px] overflow-hidden bg-[#898989]">
+                <div className="relative h-[200px] md:h-[250px] lg:h-[326px] w-full lg:w-[427px] shrink-0 rounded-[9px] overflow-hidden bg-gray-100">
                   <Image
                     src={current.image}
                     alt={current.title}
@@ -859,27 +859,27 @@ function ProductsCarouselContent() {
                   />
                 </div>
               </div>
-
+ 
               {/* Subcategory Cards */}
-              <div className={`grid grid-cols-1 gap-2 ${current.subcategories.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
-                {current.subcategories.map((sub: Record<string, unknown>) => (
+              <div className={`grid grid-cols-1 gap-2 md:gap-4 ${current.subcategories.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
+                {current.subcategories.map((sub: any) => (
                   <div
-                    key={sub.title as string}
+                    key={sub.title}
                     className="bg-[#fafafa] border border-[#e0e0e0] border-b-2 rounded-[8px] p-4 flex flex-col gap-2"
                   >
-                    <h4 className="font-display font-medium text-[18px] md:text-[21px] text-[#68b0ef] leading-[24px] whitespace-nowrap">
-                      {sub.title as string}
+                    <h4 className="font-display font-bold text-[18px] text-[#2f95ec] leading-tight">
+                      {sub.title}
                     </h4>
                     {sub.bestFor ? (
                       <div className="font-sans text-[12px] text-[#002d1b] leading-[18px] flex flex-col gap-1">
-                        <div><span className="font-bold">Best For:</span> {sub.bestFor as string}</div>
+                        <div><span className="font-bold">Best For:</span> {sub.bestFor}</div>
                         {sub.keySpecs ? (
-                          <div><span className="font-bold">Key Specs:</span> {(sub.keySpecs as string[]).join(", ")}</div>
+                          <div><span className="font-bold">Key Specs:</span> {sub.keySpecs.join(", ")}</div>
                         ) : null}
                       </div>
                     ) : (
                       <p className="font-sans text-[12px] text-[#002d1b] leading-[18px]">
-                        {sub.description as string}
+                        {sub.description}
                       </p>
                     )}
                   </div>
@@ -888,14 +888,14 @@ function ProductsCarouselContent() {
             </motion.div>
           </AnimatePresence>
         </div>
-
+ 
         {/* Right Arrow */}
         <button
           onClick={next}
-          className="shrink-0 w-12 h-[47px] bg-[#2f95ec] rounded-[8px] flex items-center justify-center hover:brightness-110 transition-all"
+          className="shrink-0 w-9 h-9 md:w-12 md:h-[47px] bg-[#2f95ec] rounded-full md:rounded-[8px] flex items-center justify-center hover:brightness-110 transition-all z-10"
           aria-label="Next product"
         >
-          <svg width="18" height="29" viewBox="0 0 18 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg className="w-5 h-5 md:w-4.5 md:h-7" viewBox="0 0 18 29" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3.42508 0.146873L0 3.57195L11.1255 14.7218L0 25.8716L3.42508 29.2967L18 14.7218L3.42508 0.146873Z" fill="white"/>
           </svg>
         </button>

@@ -22,7 +22,7 @@ export default function Footer() {
         >
           <h3 className="text-xl md:text-2xl font-bold font-display capitalize">Quick Links</h3>
           <nav className="flex flex-col gap-3 md:gap-4 text-base md:text-lg lg:text-xl">
-            <Link href="/core-solutions" className="hover:text-[#99ea5c] transition-colors">Products</Link>
+            <Link href="/core-solutions" className="hover:text-[#99ea5c] transition-colors">Solutions</Link>
             <Link href="/#partners" className="hover:text-[#99ea5c] transition-colors">Partners</Link>
             <Link href="/#about" className="hover:text-[#99ea5c] transition-colors">About us</Link>
             <Link href="/contact" className="hover:text-[#99ea5c] transition-colors">Contact</Link>
